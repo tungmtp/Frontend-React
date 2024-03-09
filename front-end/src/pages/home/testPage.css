@@ -1,0 +1,17 @@
+.ant-btn-default {
+  background: none;
+  border: none;
+  color: orange;
+}
+.ant-btn-default :hover {
+  background: none;
+  border: none;
+  color: rgba(255, 166, 0, 0.664);
+}
+:where(.css-dev-only-do-not-override-1uweeqc).ant-btn-default:not(
+    :disabled
+  ):not(.ant-btn-disabled):hover {
+  background: none;
+  border: none;
+  color: rgba(255, 166, 0, 0.664);
+}
