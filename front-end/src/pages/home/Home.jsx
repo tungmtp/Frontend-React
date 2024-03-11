@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 import {
   LaptopOutlined,
   NotificationOutlined,
@@ -13,6 +15,26 @@ const items1 = ["1", "2", "3"].map((key) => ({
   key,
   label: `nav ${key}`,
 }));
+
+const fetchDataAndSetToken = async () => {
+  try {
+    // Make the API request to retrieve data
+    const response = await axios.get("http://example.com/api/data");
+
+    // Extract the token from the response
+    const { token } = response.data;
+
+    // Store the token in cookies
+    Cookies.set("token", token);
+
+    // Handle the retrieved data as needed
+    console.log("Data:", response.data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    // Handle errors appropriately
+  }
+};
+
 const categories = [
   { id: 1, catName: "Nguyên liệu chính A", chillOf: null },
   { id: 2, catName: "Nguyên liệu chính A.1", chillOf: 1 },
@@ -184,7 +206,6 @@ const Home = () => {
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             style={{
-              height: "100%",
               borderRight: 0,
             }}
             items={items2}
